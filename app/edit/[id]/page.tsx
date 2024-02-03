@@ -1,23 +1,15 @@
-
 'use client'
 import React from 'react'
 import { Grid, GridItem } from '@chakra-ui/react'
 import Navigation from "@/components/Navigation";
 import UpdateNote from "@/components/UpdateNote";
-import { useRouter } from 'next/navigation'
 import { useNoteContext } from '../../../contexts/NoteContext';
 
-
 const EditNote = ({ params }) => {
-    const router = useRouter();
     const { notes } = useNoteContext();
-    console.log('EditNote params = ', params);
-    console.log('EditNote params.id = ', params.id);
-    console.log('EditNote notes = ', notes);
-
+    
     // finding the object whose id is 'params.id'
     const note = notes.find((note) => note.id == params.id);
-    console.log('EditNote note = ', note);
 
     return (
         <>

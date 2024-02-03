@@ -13,7 +13,7 @@ const Header: React.FC<HeaderProps> = ({ title, onSearchChange }) => {
     <header>
       <Flex>
         <Box p='4' bg='white.400'>
-          <Image w='20px' h='20px' src='./note.png' alt="note" />
+          <Image w='20px' h='20px' src='/note.png' alt="note" />
         </Box>
         <Box p='4' bg='white.400'>
           <h1>{title}</h1>

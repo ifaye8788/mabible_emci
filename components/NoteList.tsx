@@ -4,8 +4,14 @@ import { Stack, HStack, VStack, StackDivider, Box, Button, ButtonGroup, IconButt
 import { AddIcon } from '@chakra-ui/icons'
 import { Image } from '@chakra-ui/react'
 import { useRouter } from 'next/navigation'
-import { Flex, Spacer, AbsoluteCenter } from '@chakra-ui/react'
-import Link from 'next/link'
+import { Flex, Spacer, AbsoluteCenter, Divider } from '@chakra-ui/react'
+import {
+  MenuButton,
+  MenuList,
+  MenuItem,
+  Menu,
+} from '@chakra-ui/react'
+
 
 interface NoteListProps {
   notes: Note[];
@@ -24,9 +30,10 @@ const NoteList: React.FC<NoteListProps> = ({ notes, onUpdateNote, onDeleteNote }
           spacing={4}
           align='stretch'
         >
+          <Divider />
           <Box boxSize='sm'>
             <Center >
-              <Image src='./bookImage.png' alt="book-image" />
+              <Image src='/bookImage.png' alt="book-image" />
             </Center>
           </Box>
           <Box h='40px' bg='white.200'>
@@ -35,9 +42,12 @@ const NoteList: React.FC<NoteListProps> = ({ notes, onUpdateNote, onDeleteNote }
             </Center>
           </Box>
           <Box h='40px' bg='white.200'>
-            <ButtonGroup size='sm' isAttached variant='outline'>
-              <IconButton aria-label='Add Note' onClick={() => router.push('/noteform')} icon={<AddIcon />} />
-            </ButtonGroup>
+            <Flex>
+              <Spacer />
+              <ButtonGroup size='sm' isAttached variant='outline'>
+                <IconButton aria-label='Add Note' onClick={() => router.push('/noteform')} icon={<AddIcon />} />
+              </ButtonGroup>
+            </Flex>
           </Box>
         </VStack >
       ) : (
@@ -47,9 +57,12 @@ const NoteList: React.FC<NoteListProps> = ({ notes, onUpdateNote, onDeleteNote }
           align='stretch'
         >
           <Box h='40px' bg='white.200'>
-            <ButtonGroup size='sm' isAttached variant='outline'>
-              <IconButton aria-label='Add Note' onClick={() => router.push('/noteform')} icon={<AddIcon />} />
-            </ButtonGroup>
+            <Flex>
+              <Spacer />
+              <ButtonGroup size='sm' isAttached variant='outline'>
+                <IconButton aria-label='Add Note' onClick={() => router.push('/noteform')} icon={<AddIcon />} />
+              </ButtonGroup>
+            </Flex>
           </Box>
           <Box h='40px' bg='white.200'>
             <div>
@@ -59,22 +72,28 @@ const NoteList: React.FC<NoteListProps> = ({ notes, onUpdateNote, onDeleteNote }
                     <div>
                       <Flex>
                         <Box p='4' bg='white.400'>
-                          <p>Title: {note.title}</p>
+                          {note.title}
                         </Box>
                         <Spacer />
                         <Box p='4' bg='white.400'>
-                          <p>Created at: {note.createdAt.toString()}</p>
+                          {note.createdAt.toLocaleString()}
                         </Box>
                         <Box p='4' bg='white.400'>
-                          <Link href={`/edit/${note.id}`}>
-                            Edit
-                          </Link>
-                          <button onClick={() => onDeleteNote(note.id)}>Delete</button>
+                          <Menu>
+                            <MenuButton >
+                              <Image w='20px' h='20px' mr='5px' src='/choix.png' alt="plus" />
+                            </MenuButton>
+                            <MenuList>
+                              <MenuItem as='a' onClick={() => router.push(`/edit/${note.id}`)}>Editer</MenuItem>
+                              <MenuItem as='a' onClick={() => onDeleteNote(note.id)}>Supprimer</MenuItem>
+                            </MenuList>
+                          </Menu>
                         </Box>
                       </Flex>
-                      <div>
-                        <p>Content: {note.body}</p>
-                      </div>
+                      <Box bg='white' w='100%' p={4} color='black'>
+                        {note.body}
+                      </Box>
+                      <Divider />
                     </div>
                   </li>
                 ))}

@@ -22,7 +22,7 @@ const NotesPage = () => {
   };
 
   const handleDeleteNote = (id: number) => {
-    if (window.confirm('Are you sure you want to delete this note?')) {
+    if (window.confirm('Confirmez-vous la demande de suppression?')) {
       deleteNote(id);
     }
   };

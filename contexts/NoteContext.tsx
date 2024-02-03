@@ -53,7 +53,7 @@ export const NoteProvider = ({ children }) => {
           id: data.id + note.id, //data.id toujours égal à 101
           title: data.title,
           body: data.body,
-          createdAt: new Date(data.createdAt),
+          createdAt: new Date(),
         };
         setNotes([...notes, newNote]);
       })

@@ -44,7 +44,7 @@ const UpdateNote = ({note}) => {
       <Textarea value={body} onChange={(e) => setBody(e.target.value)} />
     </FormControl>
     <Button colorScheme="teal" mt={4} onClick={handleUpdateNote}>
-      Mettre à jour la note
+      Editer la note
     </Button>
   </Box>
   );
