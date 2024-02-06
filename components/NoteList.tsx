@@ -71,11 +71,11 @@ const NoteList: React.FC<NoteListProps> = ({ notes, onUpdateNote, onDeleteNote }
                   <li key={note.id}>
                     <div>
                       <Flex>
-                        <Box p='4' bg='white.400'>
+                        <Box p='4' bg='white.400' color='black'>
                           {note.title}
                         </Box>
                         <Spacer />
-                        <Box p='4' bg='white.400'>
+                        <Box p='4' bg='white.400' color='grey'>
                           {note.createdAt.toLocaleString()}
                         </Box>
                         <Box p='4' bg='white.400'>
@@ -90,7 +90,7 @@ const NoteList: React.FC<NoteListProps> = ({ notes, onUpdateNote, onDeleteNote }
                           </Menu>
                         </Box>
                       </Flex>
-                      <Box bg='white' w='100%' p={4} color='black'>
+                      <Box bg='white' w='100%' p={4} color='black' fontSize='xs' as='sup'>
                         {note.body}
                       </Box>
                       <Divider />
